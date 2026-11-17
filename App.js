@@ -2,40 +2,40 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native';
 
 const baslangicOyuncular = [
-  { id: 1, isim: 'Ayşe', puan: 40, seviye: 3 },
+  { id: 1, isim: 'Ayse', puan: 40, seviye: 3 },
   { id: 2, isim: 'Veli', puan: 15, seviye: 1 },
   { id: 3, isim: 'Zeynep', puan: 70, seviye: 5 },
   { id: 4, isim: 'Mehmet', puan: 55, seviye: 4 },
 ];
 
 const envanter = [
-  { id: 1, ad: 'Kılıç', tur: 'silah', deger: 150, nadir: true },
-  { id: 2, ad: 'Kalkan', tur: 'zırh', deger: 90, nadir: false },
-  { id: 3, ad: 'İksir', tur: 'sarf', deger: 20, nadir: false },
+  { id: 1, ad: 'Kilic', tur: 'silah', deger: 150, nadir: true },
+  { id: 2, ad: 'Kalkan', tur: 'zirh', deger: 90, nadir: false },
+  { id: 3, ad: 'Iksir', tur: 'sarf', deger: 20, nadir: false },
   { id: 4, ad: 'Asa', tur: 'silah', deger: 300, nadir: true },
 ];
 
 export default function App() {
   const [filtreAktif, setFiltreAktif] = useState(false);
 
-  // filter & map kullanımı
+  // filter & map kullanimi
   const gosterilenOyuncular = filtreAktif
     ? baslangicOyuncular.filter((o) => o.puan > 30)
     : baslangicOyuncular;
 
-  // reduce kullanımı (toplam puan hesaplama)
+  // reduce kullanimi (toplam puan hesaplama)
   const toplamPuan = gosterilenOyuncular.reduce((acc, curr) => acc + curr.puan, 0);
 
-  // Sadece silahları filtreleme
+  // Silahlari filtreleme
   const silahlar = envanter.filter((item) => item.tur === 'silah');
   const toplamEnvanter = envanter.reduce((acc, curr) => acc + curr.deger, 0);
 
   return (
     <ScrollView style={styles.ekran} contentContainerStyle={styles.icerik}>
       <Text style={styles.anaBaslik}>DOT311 — 2. Hafta</Text>
-      <Text style={styles.altBaslik}>JavaScript (ES6+) Temelleri & Liste İşleme</Text>
+      <Text style={styles.altBaslik}>JavaScript (ES6+) Temelleri & Liste Isleme</Text>
 
-      {/* 1. Bölüm: Skor Tablosu (map, filter, template literals) */}
+      {/* 1. Bolum: Skor Tablosu (map, filter, template literals) */}
       <View style={styles.kart}>
         <View style={styles.kartBaslikSatir}>
           <Text style={styles.kartBaslik}>🏆 Skor Tablosu</Text>
@@ -44,7 +44,7 @@ export default function App() {
             onPress={() => setFiltreAktif(!filtreAktif)}
           >
             <Text style={[styles.filtreYazi, filtreAktif && styles.filtreYaziAktif]}>
-              {filtreAktif ? 'Filtre: > 30 Puan ✓' : 'Tümünü Göster'}
+              {filtreAktif ? 'Filtre: > 30 Puan ✓' : 'Tumunu Goster'}
             </Text>
           </Pressable>
         </View>
@@ -62,26 +62,26 @@ export default function App() {
 
         <View style={styles.ozetKutu}>
           <Text style={styles.ozetYazi}>
-            Listelenen Oyuncuların Toplam Puanı: <Text style={styles.vurgu}>{toplamPuan}</Text>
+            Listelenen Oyuncularin Toplam Puani: <Text style={styles.vurgu}>{toplamPuan}</Text>
           </Text>
         </View>
       </View>
 
-      {/* 2. Bölüm: Envanter Filtreleme (filter, reduce) */}
+      {/* 2. Bolum: Envanter Filtreleme (filter, reduce) */}
       <View style={styles.kart}>
-        <Text style={styles.kartBaslik}>🎒 Envanter İstatistikleri</Text>
+        <Text style={styles.kartBaslik}>🎒 Envanter Istatistikleri</Text>
         <Text style={styles.aciklama}>Silahlar (filter ile filtrelendi):</Text>
         
         {silahlar.map((silah) => (
           <View key={silah.id} style={styles.envanterSatir}>
             <Text style={styles.envanterAd}>⚔️ {silah.ad} {silah.nadir ? '(Nadir)' : ''}</Text>
-            <Text style={styles.envanterDeger}>{`${silah.deger} Altın`}</Text>
+            <Text style={styles.envanterDeger}>{`${silah.deger} Altin`}</Text>
           </View>
         ))}
 
         <View style={styles.ozetKutu}>
           <Text style={styles.ozetYazi}>
-            Tüm Envanter Toplam Değeri: <Text style={styles.vurgu}>{toplamEnvanter} Altın</Text>
+            Tum Envanter Toplam Degeri: <Text style={styles.vurgu}>{toplamEnvanter} Altin</Text>
           </Text>
         </View>
       </View>
