@@ -1,0 +1,19 @@
+{
+  "name": "hafta-02-js-temelleri",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "test-js": "node js-alistirmalari.js"
+  },
+  "dependencies": {
+    "expo": "~58.0.25",
+    "expo-status-bar": "~58.0.5",
+    "react": "19.3.0",
+    "react-native": "0.88.1"
+  },
+  "private": true
+}
